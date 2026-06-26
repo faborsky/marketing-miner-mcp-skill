@@ -61,14 +61,19 @@ síla — a důvod, proč sem člověk chodí — je **CZ/SK**.
   zákazníka („boty do města"). Pro názvy kategorií, produktů i nadpisů článků se
   řiď **hledaností, ne firemním žargonem**.
 - **Hledanost je poptávka, ne úspěch.** Vysoký objem = velký trh _i_ velká
-  konkurence. Čti ho spolu s tím, jak těžké slovo je (`difficulty`) a na jaké
-  pozici web reálně je.
+  konkurence. Čti ho spolu s trendem a s tím, na jaké pozici web reálně je.
+- **`difficulty` ber jako bonus, ne jako bránu.** V čerstvých/mladých nikách ji
+  MM vrací jen u malé části slov (zbytek `null`) — prioritizace „nízká difficulty
+  = easy win" tam tiše selže. Řiď se **objem × trend × vlastní reálné pozice**
+  (např. z Google Search Console). Detail viz [`references/tools.md`](references/tools.md).
 - **`search_volume: null` = slovo zahoď.** Žádná měřitelná poptávka → nedávej ho
   do nadpisu ani meta titlu, najdi variantu, kterou lidi opravdu píšou.
 - **Sezónnost čti z `monthly_sv` a `peak_month`.** E-shopové pojmy mají často
   silnou sezónu — ovlivní to timing obsahu i kampaní (publikuj _před_ vrcholem).
-- **Trend (`yoy_change`) je signál tématu.** Velký meziroční růst = téma na
-  vzestupu, vyplatí se mu dát prostor dřív než konkurenci.
+- **Trend (`yoy_change`) je signál tématu — ale pozor na nízkou bázi.** Velký
+  meziroční růst = téma na vzestupu. Extrémní % (řádově statisíce, např.
+  +900 000 %) ale neznamená explozi trhu, jen že termín loni skoro neexistoval —
+  je to **nový dotaz**. Vždy čti proti absolutnímu objemu.
 - **Nikdy nevracej přepis JSON.** Vrať strukturovaná čísla + závěr. Surový dump
   z MCP není odpověď.
 
@@ -101,6 +106,11 @@ v čase, audity ani batch.
 
 **Pravidlo:** na **hlídání, audity a velké objemy** pošli člověka do plné
 aplikace — řekni to narovinu, nesnaž se to ohnout přes MCP.
+
+> **Ověřeno provozem:** `ai_overviews` se u `cs` přes MCP **nevrací** (ani jako
+> `serp_feature`, ani prakticky jako `result_type`), přestože AI Overviews v ČR
+> reálně běží. Přítomnost AIO / AEO viditelnost přes Marketing Miner **neměř** —
+> v datech to není. Detail viz [`references/tools.md`](references/tools.md).
 
 ---
 
@@ -166,8 +176,9 @@ obsahového plánu) — ale netlač, když o to nikdo neřekl.
   variantu nebo plný nástroj. Nikdy nevymýšlej hledanosti ani pozice.
 - **Hlídej kredity** — víc dotazů než je potřeba nedělej; u rozsáhlejšího
   průzkumu si nech rozsah odkývnout.
-- **Neslibuj, co MCP neumí** (monitoring, audity, AI viditelnost, backlinky) —
-  pošli do plné aplikace.
+- **Neslibuj, co MCP neumí** (monitoring, audity, AI viditelnost vč. AEO /
+  AI Overviews — u `cs` se `ai_overviews` ani nevrací, backlinky) — pošli do plné
+  aplikace.
 - **Nehardcoduj `result_type`** ve výstupech `website_stats*` — iteruj přes to,
   co reálně přišlo (`organic`, `paid`, `shopping_ads`, `ai_overviews`,
   `local_pack`, …).

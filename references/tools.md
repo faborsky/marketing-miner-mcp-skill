@@ -37,6 +37,30 @@ Každý tool si v popisu vyžaduje uvést zdroj. Když prezentuješ čísla:
 
 ---
 
+## Limity dat ověřené v praxi
+
+Tyhle věci nejsou v popisech toolů — vyplynuly z reálného provozu na velkém
+vzorku. Počítej s nimi, ať z dat neuděláš špatný závěr.
+
+- **AI Overviews se u `cs` nevrací.** Na velkém vzorku českých dotazů se
+  `ai_overviews` neobjevilo v `serp_features` ani jednou, přestože AI Overviews
+  v Česku reálně běží. Ber to tak, že **MM přes MCP přítomnost AIO pro češtinu
+  nedodává** — viditelnost v AI Overviews / AEO přes tenhle kanál **neměř**, na to
+  použij jiný zdroj. Totéž nejspíš platí pro `ai_overviews` jako `result_type` ve
+  `website_stats*` u cs. (Pro ostatní trhy neověřeno.)
+- **`difficulty` má v čerstvých/mladých nikách řídké pokrytí.** U nově vznikajících
+  témat a oborů vrací MM `difficulty` jen u malé části dotazů, zbytek je `null`.
+  **Nestav prioritizaci na „nízká difficulty = easy win"** — v mladé nice to tiše
+  selže (většina slov difficulty vůbec nemá). Prioritizuj **objem × trend ×
+  vlastní reálné pozice** (např. z Google Search Console) a difficulty ber jen
+  jako bonus, když ji MM vrátí.
+- **YoY z nízké báze dělá astronomická %.** `yoy_change` v řádu statisíců procent
+  (např. +900 000 %) neznamená „trh explodoval", ale „termín loni prakticky
+  neexistoval" — je to **nový/vznikající dotaz**. Vždy to čti proti absolutnímu
+  `search_volume`: malý objem + obří % = mladý termín, ne velká příležitost.
+
+---
+
 ## Keyword tooly
 
 ### `keyword_search_volume`
@@ -46,8 +70,10 @@ Reálná měsíční hledanost + CPC + meziroční změna + 12měsíční sezón
   = víc volání (pozor na kredity).
 - **Vrací (list):** `search_volume` (měsíční hledání; `null` = žádná poptávka →
   slovo zahoď), `cpc` `{value,text,currency_code}`, `yoy_change` (% vs. stejný
-  měsíc loni; `+230` = více než ztrojnásobení), `peak_month` (ISO datum vrcholu),
-  `monthly_sv` (`"01"…"12"` → int, sezónní křivka). Prázdný list = žádná data.
+  měsíc loni; `+230` = více než ztrojnásobení; **pozor na nízkou bázi** — extrémní
+  % = nový termín, ne explodující trh, viz Limity dat výše), `peak_month` (ISO
+  datum vrcholu), `monthly_sv` (`"01"…"12"` → int, sezónní křivka). Prázdný list
+  = žádná data.
 - **Použij na:** ověření slova **před** vložením do nadpisu / meta / textu; A vs B
   pojmenování; čtení sezóny.
 
@@ -62,6 +88,9 @@ Související slova ze **seed slova** — nápady na témata, H2/H3, FAQ, long-t
   `serp_features` jako `featured_snippet`/`people_also_ask`/`ai_overviews`),
   `yoy_change`, `peak_month`, `monthly_sv`.
 - **Footgun:** **není** to to samé co `website_suggestions` (viz níže).
+- **Pozor na pokrytí:** `difficulty` bývá v čerstvých nikách z velké části `null`
+  a `ai_overviews` se u `cs` ve `serp_features` nevrací — viz Limity dat výše.
+  Nestav na nich tvrdé závěry.
 
 ---
 
@@ -85,7 +114,7 @@ Snapshot SEO návštěvnosti rozpadený **podle typu výsledku**.
   `estimated_traffic_change` (m/m), `number_of_keywords`; +
   `estimated_traffic_sum`, `estimated_traffic_change_sum`, `number_of_keywords_sum`.
 - **Footgun:** **nehardcoduj** jen organic/paid — iteruj přes všechny vrácené
-  `result_type`.
+  `result_type`. (U `cs` ale nečekej `ai_overviews` — viz Limity dat výše.)
 
 ### `website_stats_range`
 Časová řada návštěvnosti za ~14 měsíců, volitelně s konkurenty na téže ose.

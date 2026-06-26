@@ -16,14 +16,18 @@ Společná pravidla pro všechny playbooky:
 1. `keyword_search_volume` (`lang`, `keyword` = seed) → je o to vůbec zájem?
    `search_volume: null` → seed přeformuluj, nemá poptávku.
 2. `keyword_suggestions` (`lang`, `keyword` = seed, `with_keyword_data: true`)
-   → hlavní related slova + `difficulty` + `serp_features`.
+   → hlavní related slova + `difficulty` + `serp_features`. (V čerstvých nikách
+   bývá `difficulty` z velké části `null` — nespoléhej na ni, viz `tools.md` →
+   Limity dat.)
 3. `keyword_suggestions` (… `suggestions_type: "questions"`) → otázky pro FAQ /
    People Also Ask sekce a H2/H3.
 4. Volitelně `keyword_suggestions` (… `suggestions_type: "trending"`) → témata na
    vzestupu, kterým dát prostor dřív.
 
 **Výstup:** návrh struktury článku (nadpis + H2/H3 + FAQ) s hledaností u každého
-bloku, oddělené „má smysl hned" (objem × nízká difficulty) vs. „spíš později".
+bloku, oddělené „má smysl hned" vs. „spíš později" podle **objem × trend × vlastní
+reálné pozice** (např. z Google Search Console). `difficulty` přidej do úvahy jen
+tam, kde ji MM vrátil — v mladých nikách často chybí.
 **Takeaway:** 1 podtéma s reálnou poptávkou, které stojí za to napsat první.
 
 ---
