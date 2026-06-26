@@ -57,11 +57,11 @@ Generický prompt „používej Marketing Miner" tohle neumí. Skill je ukotven�
 
 ```bash
 # osobní (všechny projekty)
-git clone https://github.com/<tvuj-user>/marketing-miner-mcp-skill.git \
+git clone https://github.com/faborsky/marketing-miner-mcp-skill.git \
   ~/.claude/skills/marketing-miner
 
 # nebo jen pro jeden projekt
-git clone https://github.com/<tvuj-user>/marketing-miner-mcp-skill.git \
+git clone https://github.com/faborsky/marketing-miner-mcp-skill.git \
   ./.claude/skills/marketing-miner
 ```
 
@@ -127,6 +127,6 @@ MIT — viz [LICENSE](LICENSE).
 
 ## Autor
 
-[Jindřich Fáborský](https://www.faborsky.cz) — marketér a vzdělavatel
+[Jindřich Fáborský](https://www.faborsky.cz) — marketér a lektor
 ([AI First](https://aifirst.cz)). Skill vznikl z reálné práce s Marketing Miner
 MCP a sdílím ho, ať z něj mají užitek i ostatní marketéři.
