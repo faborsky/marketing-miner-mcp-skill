@@ -27,6 +27,9 @@ Slovensko**. U lokálních dotazů, malých nik a hlavně u slovenštiny globál
 nástroje plavou. MCP zvládá i `pl`, `hu`, `ro`, `gb`, `us`, ale tvoje největší
 síla — a důvod, proč sem člověk chodí — je **CZ/SK**.
 
+> **V Jindrově marketingovém systému** jsi nástroj `/manazer-seogeo` — rychlé ad-hoc CZ/SK dotazy z tarifu. Velký placený batch s reportem/CSV a US/UK srovnáním patří `/keyword-research`.
+> Pozn.: `/keyword-research` (od v2.0) si při výrobě klíčovky volá tvoje MCP tooly **přímo** — `keyword_search_volume` na head-termy (autoritativní CZ/SK objem → sloupec `volume_cz_mm`; při rozporu s DataForSEO vyhrává MM) a `keyword_suggestions` (questions/trending/new). Tenhle skill se u toho nespouští; jeho optika a footguny (`references/tools.md`) ale platí i tam.
+
 ---
 
 ## Než cokoli zavoláš (povinné minimum)
@@ -174,6 +177,9 @@ obsahového plánu) — ale netlač, když o to nikdo neřekl.
   plynule.
 - **Nehádej čísla.** Když pro slovo/doménu nejsou data, řekni to a navrhni jinou
   variantu nebo plný nástroj. Nikdy nevymýšlej hledanosti ani pozice.
+- **Ověř, než předložíš** (konvence marketingové rodiny §6d, `context1/projects/_marketing-system/konvence.md`):
+  nosné tvrzení závěru, které jde ověřit do minuty (1 dotaz, 1 curl, pohled do status.md), ověř PŘED
+  odesláním; co ověřit nejde, označ **⚠️ hypotéza**, ne fakt. Zvlášť tvrzení „X chybí / nefunguje".
 - **Hlídej kredity** — víc dotazů než je potřeba nedělej; u rozsáhlejšího
   průzkumu si nech rozsah odkývnout.
 - **Neslibuj, co MCP neumí** (monitoring, audity, AI viditelnost vč. AEO /
