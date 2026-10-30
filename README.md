@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/faborsky-marketing-miner-mcp-skill-badge.png)](https://mseep.ai/app/faborsky-marketing-miner-mcp-skill)
+
 # Marketing Miner MCP Skill
 
 Komunitní [Agent Skill](https://docs.claude.com/en/docs/agents-and-tools/agent-skills/overview)
